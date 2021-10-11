@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Service</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <title>Title</title>
+
+    <script>
+        $(document).ready(function () {
+            // HTML 문서를 로드할 때마다 실행합니다.
+            getMessages();
+        })
+
+        function getMessages() {
+            $('#cards-box').empty();
+
+            $.ajax({
+                type: 'GET',
+                url: "/api/recipe",
+                success: function (response) {
+                    for(let i =0; i<response.length; i++){
+                        let ingredient = response[i];
+                        let name = ingredient.ingredient;
+
+                        console.log(name)
+
+                        addhtml(name);
+                    }
+
+                }
+            })
+        }
+
+        function addhtml(name) {
+            let temp_html = `
+            <a>${name}</a>
+            `
+            $('#cards-box').append(temp_html);
+        }
+
+        function saveingredient() {
+            let ingredient = $('#ingredient').val();
+            if(isValidContents(ingredient) == false) {
+                alert(" 내용 입력 ");
+                return;
+            }
+            let data = {'ingredient': ingredient}
+            $.ajax({
+                type: "POST",
+                url: "/api/recipe",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        }
+
+        function isValidContents(contents) {
+            if (contents == '') {
+                alert('내용을 입력해주세요');
+                return false;
+            }
+            if (contents.trim().length > 140) {
+                alert('공백 포함 140자 이하로 입력해주세요');
+                return false;
+            }
+            return true;
+        }
+
+        function datatest() {
+
+            $.ajax({
+                type: "GET",
+                url: "/apitest",
+                success: function (response) {
+                    console.log(response);
+
+                }
+            });
+
+        }
+
+
+    </script>
+</head>
+<body>
+<textarea class="ingredient" id="ingredient"> 재료 입력 </textarea>
+<button alt="" onclick="saveingredient()"> 재료추가</button>
+<div id="cards-box" class="area-read">
+    <a>재료1</a>
+    <a>재료1</a>
+</div>
+
+<button onclick="datatest()"> 파일 불러오기</button>
+
+</body>
+</html>
