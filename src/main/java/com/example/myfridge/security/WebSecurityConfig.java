@@ -49,10 +49,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/signup").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/**").permitAll()
-                // 그 외 어떤 요청이든 '인증'
+                // 그 외 어떤 요청이든 '인증'과정 필요
                 .anyRequest().authenticated()
                 .and()
+                .logout()
+                .logoutUrl("/user/logout")
+                .logoutSuccessUrl("/")
+                .permitAll()
+                .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+
+
+
+
+
+
+
+
 
     }
 }
