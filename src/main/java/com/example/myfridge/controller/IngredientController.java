@@ -4,6 +4,9 @@ import com.example.myfridge.dto.IngredientDto;
 import com.example.myfridge.model.Ingredient;
 import com.example.myfridge.repository.IngredientRepository;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +17,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -34,14 +38,17 @@ public class IngredientController {
         Ingredient ingredient = new Ingredient(ingredientDto);
 
         return ingredientRepository.save(ingredient);
-
     }
 
     @GetMapping("/apitest")
-    public String apitest() {
+    public List<String> apitest() {
         StringBuffer result = new StringBuffer();
+
+        ArrayList<String> list = new ArrayList<>();
+
         try {
-            String urlstr = "http://openapi.foodsafetykorea.go.kr/api/sample/COOKRCP01/json/1/5";
+            String urlstr = "http://openapi.foodsafetykorea.go.kr/api/1e28eb3d73944ce09097/COOKRCP01/json/6/10/";
+
 
             URL url = new URL(urlstr);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -50,15 +57,36 @@ public class IngredientController {
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8));
 
             String returnLine;
-            result.append("<json>");
             while((returnLine = br.readLine()) != null) {
-                result.append(returnLine + "\n");
+                result.append(returnLine);
             }
+
             urlConnection.disconnect();
+
+            JSONObject jObj;
+            JSONParser jsonParser = new JSONParser();
+
+            JSONObject jsonObj = (JSONObject) jsonParser.parse(result.toString());
+
+            JSONObject parseresponse = (JSONObject) jsonObj.get("COOKRCP01");
+
+            JSONArray array = (JSONArray) parseresponse.get("row");
+
+            for (Object o : array) {
+                jObj = (JSONObject) o;
+
+                String name = jObj.get("RCP_NM").toString();
+                list.add(name);
+                System.out.println(name);
+            }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result + "<json>";
-    }
-}
 
+
+        return list;
+    }
+
+}
