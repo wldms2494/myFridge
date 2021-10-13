@@ -5,6 +5,7 @@ package com.example.myfridge.controller;
 import com.example.myfridge.dto.IngredientDto;
 import com.example.myfridge.model.Ingredient;
 import com.example.myfridge.repository.IngredientRepository;
+import com.example.myfridge.service.Ingredientservice;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -24,6 +25,7 @@ import java.util.List;
 public class IngredientController {
 
     private final IngredientRepository ingredientRepository;
+    private final Ingredientservice ingredientservice;
 
     //냉장고 재료 가져오기
     @GetMapping("/api/recipe")
@@ -33,13 +35,23 @@ public class IngredientController {
 
 
 
-    //냉장고 재료 츄가하기
+    //냉장고 재료 추가하기
     @PostMapping("/api/recipe")
     public Ingredient createIngredient(@RequestBody IngredientDto ingredientDto) {
         Ingredient ingredient = new Ingredient(ingredientDto);
 
         return ingredientRepository.save(ingredient);
     }
+
+
+    //냉장고 재료 삭제하기
+    @DeleteMapping("/api/recipe")
+    public String deleteIngredient(@RequestBody IngredientDto ingredientDto) {
+        ingredientservice.delete(ingredientDto);
+
+        return "삭제완료";
+    }
+
 
     // 재료 선택 시 메뉴 data 추출
     @GetMapping("/api/recipe/{id}")
@@ -100,7 +112,7 @@ public class IngredientController {
     }
 
 
-    //메뉴 선택 시 레시피 추출출
+    //메뉴 선택 시 레시피 추출
     @GetMapping("/api/recipe/menu/{query}")
     public List<String> rcpmunaul(@PathVariable String query) {
         StringBuffer result = new StringBuffer();
