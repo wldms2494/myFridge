@@ -27,4 +27,7 @@ API설계
 Comment
 |기능|METHOD|APIURL|REQUEST|RESPONSE|
 |---|-------|------|-------|--------|
-|댓글 조회|GET|/api/comments|{-----}|["username" : "홍길동, "content" : "내용입니다|
+|댓글 조회|GET|/api/comments| - |["username" : "홍길동, "content" : "내용입니다]|
+|댓글 등록|POST|/api/comments|{"content" : "내용","recipeTitle" : "단호박 케일밥","star" :4}| - |
+|댓글 수정|PUT|/api/comments/{id}|{"cotent" : "수정할내용"} | - |
+|댓글 삭제|DELETE|/api/comments/{id}| - || - |
