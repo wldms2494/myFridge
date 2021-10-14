@@ -25,3 +25,4 @@ My Fridge
 API설계
 =======================
 |기능|METHOD|APIURL|REQUEST|RESPONSE|
+|---|-------|------|-------|--------|
