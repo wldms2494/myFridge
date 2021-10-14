@@ -49,6 +49,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/signup").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/**").permitAll()
+                //추가 - 메인 페이지 접근 허용
+                .antMatchers("/api/recipe").permitAll()
+
                 // 그 외 어떤 요청이든 '인증'과정 필요
                 .anyRequest().authenticated()
                 .and()

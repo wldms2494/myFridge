@@ -5,7 +5,8 @@ package com.example.myfridge.controller;
 import com.example.myfridge.dto.IngredientDto;
 import com.example.myfridge.model.Ingredient;
 import com.example.myfridge.repository.IngredientRepository;
-import com.example.myfridge.service.Ingredientservice;
+
+import com.example.myfridge.service.IngredientService;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -25,7 +26,8 @@ import java.util.List;
 public class IngredientController {
 
     private final IngredientRepository ingredientRepository;
-    private final Ingredientservice ingredientservice;
+    private final IngredientService ingredientService;
+
 
     //냉장고 재료 가져오기
     @GetMapping("/api/recipe")
@@ -54,12 +56,10 @@ public class IngredientController {
 
 
     // 재료 선택 시 메뉴 data 추출
-    @GetMapping("/api/recipe/{id}")
-    public List<String> onlymenu(@PathVariable Long id) {
-        Ingredient ingredient = ingredientRepository.findById(id).orElseThrow(
-                ()->new IllegalArgumentException("ID가 존재하지 않습니다")
-        );
-        String query = ingredient.getIngredient();
+    @GetMapping("/api/recipe/{ingredient}")
+    public List<String> onlymenu(@PathVariable String ingredient) {
+
+        String query = ingredient;
 
         StringBuffer result = new StringBuffer();
         System.out.println(query);
@@ -191,5 +191,15 @@ public class IngredientController {
         return list;
     }
 
+
+
+
+    //냉장고 재료 삭제하기
+    @DeleteMapping("/api/recipe")
+    public String deleteIngredient(@RequestBody IngredientDto ingredientDto) {
+        ingredientService.delete(ingredientDto);
+
+        return "삭제완료";
+    }
 
 }
