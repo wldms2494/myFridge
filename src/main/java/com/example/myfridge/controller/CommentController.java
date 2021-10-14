@@ -24,26 +24,35 @@ public class CommentController {
         this.commentRepository = commentRepository;
     }
 
+    //댓글 등록
     @PostMapping("/api/comments")
-    public void addComment(@RequestBody CommentRequestDto requestDto
-                        ){
-
+    public void addComment(@RequestBody CommentRequestDto requestDto){
 //        Long userId = userDetails.getUser().getId();
         commentService.creatComment(requestDto);
-
     }
 
+    //댓글 조회
     @GetMapping("/api/comments")
     public List<Comment> getComment(){
         return commentRepository.findAll();
     }
 
+
+    //댓글 수정
+    @PutMapping ("/api/comments/{id}")
+    public Long updateComment(@PathVariable Long id, @RequestBody CommentRequestDto requestDto) {
+        commentService.update(id, requestDto);
+        return id;
+    }
+
+    //댓글 삭제
     @DeleteMapping("/api/comments/{id}")
     public Long delete(@PathVariable Long id) {
-
         commentRepository.deleteById(id);
         return id;
 
     }
+
+
 
 }

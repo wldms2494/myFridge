@@ -23,10 +23,10 @@ public class Comment extends Timestamped{
 //    @Column(nullable = false)
 //    private Long userId;
 
-    @Column(nullable = false)
+    @Column
     private String recipeTitle;
 
-    @Column(nullable = false)
+    @Column
     private int star;
 
 
@@ -53,10 +53,15 @@ public class Comment extends Timestamped{
         this.star = requestDto.getStar();
 
     }
-//
-//    public void addComment(Comment comment){
-//        this.commentList.add(comment);
-//    }
+
+    //update메소드 추가요
+    public void update(CommentRequestDto requestDto){
+        this.content = requestDto.getContent();
+//        this.recipeTitle = requestDto.getRecipeTitle();
+//        this.star = requestDto.getStar();
+
+
+    }
 
 }
 

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 public class CommentRequestDto {
 
-    String content;
-    String recipeTitle;
-    int star;
+   private String content;
+   private String recipeTitle;
+   private int star;
 }
