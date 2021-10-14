@@ -1,4 +1,4 @@
-My Fridge
+My Fridge🥢
 =====================
 서비스 주소 : 
 
@@ -22,7 +22,7 @@ My Fridge
 
 개발 환경 
 ====================
-API설계
+⭐️API설계⭐️
 =======================
 ####Comment
 |기능|METHOD|APIURL|REQUEST|RESPONSE|
