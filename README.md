@@ -24,5 +24,7 @@ My Fridge
 ====================
 API설계
 =======================
+Comment
 |기능|METHOD|APIURL|REQUEST|RESPONSE|
 |---|-------|------|-------|--------|
+|댓글 조회|GET|/api/comments|{-----}|["username" : "홍길동, "content" : "내용입니다|
