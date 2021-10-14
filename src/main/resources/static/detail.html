@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Service</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            // HTML 문서를 로드할 때마다 실행합니다.
+            //getMenu();
+        })
+
+        function getMenu() {
+            let postId = location.href.split("id=")[1];
+            console.log(postId)
+            $.ajax({
+                type: "GET",
+                url: `/api/recipe/${postId}`,
+                data: {},
+                success: function (response) {
+                    console.log(response)
+                    for (let i = 0; i < response.length; i++) {
+                        let post = response[i];
+
+                        addhtml(post)
+                    }
+                }
+            });
+        }
+        function addhtml(post) {
+            let temp_html = `
+            <a>${post}</a>
+            <hr>
+            `
+            $('#cards-box').append(temp_html);
+        }
+
+
+        function getMenuFull() {
+            $('#cards-box').empty();
+            let postId = location.href.split("id=")[1];
+            console.log(postId)
+            $.ajax({
+                type: "GET",
+                url: `/api/recipe/${postId}`,
+                data: {},
+                success: function (response) {
+                    for (let i = 0; i < response.length; i++) {
+                        let post = response[i];
+                        let id = post.id;
+                        let ingrdient = post.ingredient;
+
+                        console.log(id, ingrdient);
+                    }
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+
+<button onclick="getMenu()">안녕하세요</button>
+<div id="cards-box" class="area-read">
+
+</div>
+
+</body>
+</html>
