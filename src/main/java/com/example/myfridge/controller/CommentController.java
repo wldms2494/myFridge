@@ -4,10 +4,8 @@ package com.example.myfridge.controller;
 import com.example.myfridge.dto.CommentRequestDto;
 import com.example.myfridge.model.Comment;
 import com.example.myfridge.repository.CommentRepository;
-import com.example.myfridge.security.UserDetailsImpl;
 import com.example.myfridge.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
