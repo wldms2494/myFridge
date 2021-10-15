@@ -6,19 +6,10 @@ import com.example.myfridge.dto.IngredientDto;
 import com.example.myfridge.model.Ingredient;
 import com.example.myfridge.repository.IngredientRepository;
 
-import com.example.myfridge.service.Ingredientservice;
+import com.example.myfridge.service.IngredientService;
 import lombok.RequiredArgsConstructor;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -26,7 +17,7 @@ import java.util.List;
 public class IngredientController {
 
     private final IngredientRepository ingredientRepository;
-    private final Ingredientservice ingredientService;
+    private final IngredientService ingredientService;
 
 
     //냉장고 재료 가져오기
@@ -62,7 +53,7 @@ public class IngredientController {
 
 
     //메뉴 선택 시 레시피 추출
-    @GetMapping("/api/recipe/menu/{query}")
+    @GetMapping("/api/recipe/menu/{recipe}")
     public List<String> rcpmunaul(@PathVariable String recipe) {
         return ingredientService.menurecipe(recipe);
     }

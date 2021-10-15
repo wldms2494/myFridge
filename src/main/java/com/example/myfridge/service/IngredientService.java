@@ -20,7 +20,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class Ingredientservice {
+public class IngredientService {
 
     private final IngredientRepository ingredientRepository;
 
