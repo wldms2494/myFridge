@@ -59,3 +59,62 @@ Developers👍
 |댓글 수정|PUT|/api/comments/{id}| {"cotent" : "수정할내용"} | -|
 |댓글 삭제|DELETE|/api/comments/{id}| - || - |
 
+
+
+**냉장고**
+
+<table>
+<tr>
+    <th>기능</th>
+    <th>METHOD</th>
+    <th>URL</th>
+    <th>Request</th>
+    <th>Response</th>
+</tr>
+<tr>
+    <th>냉장고 재료 가져오기</th>
+    <th>GET</th>
+    <th>/api/recipe</th>
+    <th> - </th>
+    <th>{ "id" : 15, "ingredient" : "당근" }</th>
+</tr>
+<tr>
+    <th>냉장고 재료 추가하기</th>
+    <th>POST</th>
+    <th>/api/recipe</th>
+    <th> { "ingredient" : "당근" </th>
+    <th> - </th>
+</tr>
+<tr>
+    <th>냉장고 재료 삭제하기</th>
+    <th>DELETE</th>
+    <th>/api/recipe</th>
+    <th> {"ingredient" : "당근" } </th>
+    <th> - </th>
+</tr>
+<tr>
+    <th>재료 선택 시  음식 메뉴 데이터 리스트로 추출</th>
+    <th>GET</th>
+    <th>/api/recipe/{ingredient}</th>
+    <th> - </th>
+    <th> "RCP_NM" : "오렌지 당근펀치"  ,
+"ATT_FILE_NO_MK" :   "이미지 URL"  </th>
+</tr>
+<tr>
+    <th>메뉴 선택 시 레시피 추출</th>
+    <th> GET </th>
+    <th>/api/recipe/meny/{query}</th>
+    <th> - </th>
+    <th> "RCP_NM' : '오렌지 당근펀치",
+"ATT_FILE_NO_MK" : "레시피 url"
+"RCP_PARTS_DTLS" : "오렌지 100g(1/2개), 물 50ml(1/4컵)"
+
+"'MANUAL01" : "1. 레시피순서1.",
+"MANUAL01" : "2. 레시피순서2 ",
+"MANUAL01" : "3. 레시피순서3",
+     </th>
+</tr>
+
+</table>
+
+
