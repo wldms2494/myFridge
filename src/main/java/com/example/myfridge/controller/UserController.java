@@ -50,7 +50,7 @@ public class UserController {
     @PostMapping("/user/login")
     public List<Map<String,String>> login(@RequestBody SignupRequestDto requestDto) {
 
-        User user = userService.login(requestDto.getUsername());
+        User user = userService.login(requestDto.getUsername(), requestDto.getPassword());
 
 
         Map<String,String> username =new HashMap<>();

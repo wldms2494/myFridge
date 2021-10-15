@@ -29,6 +29,9 @@ public class Comment extends Timestamped{
     @Column
     private int star;
 
+    @Column
+    private String username;
+
 
 //
 //    public Comment(String content, Long userId, String recipeTitle) {
@@ -51,6 +54,7 @@ public class Comment extends Timestamped{
         this.content = requestDto.getContent();
         this.recipeTitle = requestDto.getRecipeTitle();
         this.star = requestDto.getStar();
+        this.username = requestDto.getUsername();
 
     }
 
@@ -60,6 +64,14 @@ public class Comment extends Timestamped{
 //        this.recipeTitle = requestDto.getRecipeTitle();
 //        this.star = requestDto.getStar();
 
+
+    }
+
+    //xss방지 생성자 만듬
+    public Comment (CommentRequestDto requestDto, String content) {
+        this.recipeTitle = requestDto.getRecipeTitle();
+        this.username = requestDto.getUsername();
+        this.content = content;
 
     }
 
