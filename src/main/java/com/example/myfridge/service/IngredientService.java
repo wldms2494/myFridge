@@ -25,6 +25,7 @@ public class IngredientService {
 
     private final IngredientRepository ingredientRepository;
 
+
     @Transactional
     public void delete(IngredientDto ingredientDto) {
         Ingredient test = ingredientRepository.findByIngredient(ingredientDto.getIngredient()).orElseThrow(
@@ -72,7 +73,6 @@ public class IngredientService {
             JSONObject jObj;
             JSONParser jsonParser = new JSONParser();
 
-
             JSONObject jsonObj = (JSONObject) jsonParser.parse(result.toString());
 
             JSONObject parseresponse = (JSONObject) jsonObj.get("COOKRCP01");
@@ -88,8 +88,7 @@ public class IngredientService {
                 list.add(name);
                 list.add(img);
             }
-        } catch (Exception exception)
-        {
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
         return list;
@@ -102,7 +101,7 @@ public class IngredientService {
 
         String finaltest = "";
 
-        if(menu.contains(" ")) {
+        if (menu.contains(" ")) {
             String test = menu.replaceAll("\\s", "_");
             finaltest = test;
             System.out.println(finaltest);
@@ -181,12 +180,10 @@ public class IngredientService {
                 list.add(menual8);
                 list.add(menual9);
             }
-        } catch (Exception exception)
-        {
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
         return list;
     }
-
 
 }
