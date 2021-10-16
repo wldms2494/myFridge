@@ -48,7 +48,7 @@ Developers👍
 -React
 
 `deploy`  
--AWS EC2
+-AWS EC2  
 -AWS RDS
 
 
