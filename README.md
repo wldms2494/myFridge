@@ -139,9 +139,7 @@ Developers👍
 =================
 # 🤬CORS ERROR 🤬
 
-
-
-#### cors에러란?  
+ cors에러란?  
 통신을 하려는 두 출처가 다를 경우 일어나는 에러이다   
 Cross-Origin Resource Sharing(CORS)은 추가적인 HTTP header를 사용해서 애플리케이션이 다른 origin의 리소스에 접근할 수 있도록 하는 메커니즘을 말한다. 하지만 다른 origin에서 내 리소스에 함부로 접근하지 못하게 하기 위해 사용된다.  
 
