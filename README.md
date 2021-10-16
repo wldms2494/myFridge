@@ -96,7 +96,7 @@ Developers👍
     <th>냉장고 재료 추가하기</th>
     <th>POST</th>
     <th>/api/recipe</th>
-    <th> { "ingredient" : "당근" </th>
+    <th> { "ingredient" : "당근" } </th>
     <th> - </th>
 </tr>
 <tr>
