@@ -6,7 +6,9 @@ import com.example.myfridge.model.Comment;
 import com.example.myfridge.model.Ingredient;
 import com.example.myfridge.repository.CommentRepository;
 import com.example.myfridge.repository.IngredientRepository;
+import com.example.myfridge.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -28,12 +30,15 @@ public class CommentService {
         @Transactional
          public Comment creatComment(CommentRequestDto requestDto) {
 
-        Comment comment = new Comment(requestDto);
+        String commentCheck = requestDto.getContent();
+        if(commentCheck.contains("script")||commentCheck.contains("<")||commentCheck.contains(">")){
 
+            Comment comment = new Comment(requestDto, "뭐하시는겁니까!!!");
+            commentRepository.save(comment);
+            return comment;
+        }
+        Comment comment = new Comment (requestDto);
         commentRepository.save(comment);
-//        Comment comment2 = commentRepository.findByRecipeTitle(comment.getRecipeTitle()).orElse(null);;
-//        comment.addComment(comment2);
-
         return comment;
 
     }

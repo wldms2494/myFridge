@@ -25,8 +25,9 @@ public class CommentController {
     //댓글 등록
     @PostMapping("/api/comments")
     public void addComment(@RequestBody CommentRequestDto requestDto){
-//        Long userId = userDetails.getUser().getId();
+
         commentService.creatComment(requestDto);
+
     }
 
     //댓글 조회

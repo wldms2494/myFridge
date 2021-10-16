@@ -35,6 +35,18 @@ public class IngredientController {
         return ingredientRepository.save(ingredient);
     }
 
+    //재료 선택 시 매뉴 data추출
+    @GetMapping("/api/recipe/{ingredient}")
+    public List<String> onlymenu(@PathVariable String ingredient) {
+        return ingredientService.findmenu(ingredient);
+    }
+
+
+    //메뉴 선택 시 레시피 추출
+    @GetMapping("/api/recipe/menu/{recipe}")
+    public List<String> rcpmunaul(@PathVariable String recipe){
+        return ingredientService.menurecipe(recipe);
+    }
 
     //냉장고 재료 삭제하기
     @DeleteMapping("/api/recipe")
@@ -45,16 +57,5 @@ public class IngredientController {
     }
 
 
-    // 재료 선택 시 메뉴 data 추출
-    @GetMapping("/api/recipe/{ingredient}")
-    public List<String> onlymenu(@PathVariable String ingredient) {
-        return ingredientService.findmenu(ingredient);
-    }
 
-
-    //메뉴 선택 시 레시피 추출
-    @GetMapping("/api/recipe/menu/{recipe}")
-    public List<String> rcpmunaul(@PathVariable String recipe) {
-        return ingredientService.menurecipe(recipe);
-    }
 }

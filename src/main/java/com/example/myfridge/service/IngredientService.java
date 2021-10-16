@@ -3,6 +3,7 @@ package com.example.myfridge.service;
 import com.example.myfridge.dto.IngredientDto;
 import com.example.myfridge.model.Ingredient;
 import com.example.myfridge.repository.IngredientRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -23,6 +24,7 @@ import java.util.List;
 public class IngredientService {
 
     private final IngredientRepository ingredientRepository;
+
 
     @Transactional
     public void delete(IngredientDto ingredientDto) {
@@ -86,8 +88,7 @@ public class IngredientService {
                 list.add(name);
                 list.add(img);
             }
-        } catch (Exception exception)
-        {
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
         return list;
@@ -100,7 +101,7 @@ public class IngredientService {
 
         String finaltest = "";
 
-        if(menu.contains(" ")) {
+        if (menu.contains(" ")) {
             String test = menu.replaceAll("\\s", "_");
             finaltest = test;
             System.out.println(finaltest);
@@ -179,6 +180,7 @@ public class IngredientService {
                 list.add(menual8);
                 list.add(menual9);
             }
+
         } catch (NullPointerException e) {
             System.out.println("Recipie_info NullPointerException 발생  >>  '");
         } catch (ArithmeticException e) {
@@ -188,6 +190,10 @@ public class IngredientService {
             e.printStackTrace();
         } finally {
             System.out.println("Recipie_info 예외처리 통과");
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+
         }
         return list;
     }
