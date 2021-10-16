@@ -39,7 +39,7 @@ Developers👍
 -----------------|------------|-----------|------------|-------------|
 회원가입|GET|/user/signup| - |회원가입 Form Page|
 회원가입|POST|/user/signup|{"username" : "아이디","password" : "123","email" : "a@gmail.com}| redirect/user/login |
-로그인|POST|/user/login|{"username" : "아이디","password" : "123"} | {"username" : "아이디" , "token":"eyJhbGciOiJIUzI1NiJ9.  eyJzdWIiOiI1NTU1IiwiaWF0IjoxNjM0MDg5NzA3LCJleHAiOjE2MzQxNzYxMDd9.  zUYfzlN7jAj25Ka5Q_qWyzkGZuVIeeKq0jvND3JObe4"}|
+로그인|POST|/user/login|{"username" : "아이디","password" : "123"} | {"username" : "아이디" , "token":"eyJhbGciOiJIUzI1NiJ9."}|
 로그인|GET|/user/login| - || 로그인 Form Page |
 
 
@@ -62,28 +62,28 @@ Developers👍
     <th>Response</th>
 </tr>
 <tr>
-    <th>냉장고 재료 가져오기</th>
+    <th>냉장고 재료  가져오기</th>
     <th>GET</th>
     <th>/api/recipe</th>
     <th> - </th>
     <th>{ "id" : 15, "ingredient" : "당근" }</th>
 </tr>
 <tr>
-    <th>냉장고 재료 추가하기</th>
+    <th>냉장고 재료  추가하기</th>
     <th>POST</th>
     <th>/api/recipe</th>
     <th> { "ingredient" : "당근" </th>
     <th> - </th>
 </tr>
 <tr>
-    <th>냉장고 재료 삭제하기</th>
+    <th>냉장고 재료  삭제하기</th>
     <th>DELETE</th>
     <th>/api/recipe</th>
     <th> {"ingredient" : "당근" } </th>
     <th> - </th>
 </tr>
 <tr>
-    <th>재료 선택 시  음식 메뉴 데이터 리스트로 추출</th>
+    <th>재료 선택 시   음식 메뉴 데이터 리스트로 추출</th>
     <th>GET</th>
     <th>/api/recipe/{ingredient}</th>
     <th> - </th>
@@ -91,9 +91,9 @@ Developers👍
 "ATT_FILE_NO_MK" :   "이미지 URL"  </th>
 </tr>
 <tr>
-    <th>메뉴 선택 시 레시피 추출</th>
+    <th>메뉴 선택 시  레시피 추출</th>
     <th> GET </th>
-    <th>/api/recipe/meny/{query}</th>
+    <th>/api/recipe/menu/{query}</th>
     <th> - </th>
     <th> "RCP_NM' : '오렌지 당근펀치",
 "ATT_FILE_NO_MK" : "레시피 url"
@@ -106,3 +106,7 @@ Developers👍
 </tr>
 
 </table>
+
+
+오류해결
+===============
