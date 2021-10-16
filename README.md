@@ -2,6 +2,9 @@ My Fridge🥢
 ======================
 서비스 주소 : http://eternalclash.shop.s3-website.ap-northeast-2.amazonaws.com/
 
+와이어 프레임
+============
+[노션링크](https://www.notion.so/16-ab85549ccb3d452ba6267dde8448d993).
 
 개발 목표
 ======================
