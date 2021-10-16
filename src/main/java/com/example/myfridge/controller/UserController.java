@@ -45,13 +45,11 @@ public class UserController {
 
     }
 
-
-
+    //회원 로그인 처리
     @PostMapping("/user/login")
     public List<Map<String,String>> login(@RequestBody SignupRequestDto requestDto) {
 
-        User user = userService.login(requestDto.getUsername());
-
+        User user = userService.login(requestDto.getUsername(), requestDto.getPassword());
 
         Map<String,String> username =new HashMap<>();
         Map<String,String>token = new HashMap<>();

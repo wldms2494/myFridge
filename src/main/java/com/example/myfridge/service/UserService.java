@@ -5,10 +5,6 @@ import com.example.myfridge.model.User;
 import com.example.myfridge.model.UserRoleEnum;
 import com.example.myfridge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.example.myfridge.security.JwtTokenProvider;
@@ -60,16 +56,16 @@ public class UserService {
         userRepository.save(user);
 
     }
-//
-//    public String createToken(SignupRequestDto requestDto) {
-//        UsernamePasswordAuthenticationToken authenticationToken =
-//                new UsernamePasswordAuthenticationToken(requestDto.getUsername(), requestDto.getPassword());
-//        Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-//        return jwtTokenProvider.createToken(authentication);
-//    }
 
-    public User login(String username) {
+
+    public User login(String username, String password) {
         System.out.println(username);
-        return userRepository.findByUsername(username).orElseThrow(() -> new IllegalArgumentException("아이디 찾을 수 없습니다."));
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new IllegalArgumentException("아이디 찾을 수 없습니다."));
+        if (!passwordEncoder.matches(password,user.getPassword() ))
+        {
+            throw new IllegalArgumentException("비밀번호 불일치");
+        }
+
+        return user;
     }
 }
