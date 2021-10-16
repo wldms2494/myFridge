@@ -134,7 +134,7 @@ Developers👍
 
 오류 오류 해결 과정
 =================
-#🤬CORS ERROR 🤬
+# 🤬CORS ERROR 🤬
 
 
 
