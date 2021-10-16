@@ -180,8 +180,17 @@ public class IngredientService {
                 list.add(menual8);
                 list.add(menual9);
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+
+        } catch (NullPointerException e) {
+            System.out.println("Recipie_info NullPointerException 발생  >>  '");
+        } catch (ArithmeticException e) {
+            System.out.println("Recipie_info ArithmeticException 발생  >>  '");
+        } catch (Exception e) {
+            System.out.println("Recipie_info Exception 발생  >>  '");
+            e.printStackTrace();
+        } finally {
+            System.out.println("Recipie_info 예외처리 통과");
+
         }
         return list;
     }

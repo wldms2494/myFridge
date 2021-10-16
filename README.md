@@ -1,6 +1,14 @@
 My Fridge🥢
-=====================
+======================
 서비스 주소 : 
+
+
+개발 목표
+======================
+- [x] :  댓글 CRUD
+- [x] : 공공API를 통한 검색 기능
+- [x] : 회원가입 & Spring에서의 JWT 방식의 로그인
+- [x] : 서로 다른 개발환경 에서의 연동(CORS)
 
 
 Developers👍
@@ -21,7 +29,6 @@ Developers👍
   - 레시피 하나를 선택하고 거기에 댓글에 대한 CRUD 가능
   - 댓글과 함께 별점 체크
   - JWT를 이용한 로그인
-  - 
 
 
 
@@ -52,6 +59,8 @@ Developers👍
 |댓글 삭제|DELETE|/api/comments/{id}| - || - |
 
 
+**냉장고**
+
 <table>
 <tr>
     <th>기능</th>
@@ -68,7 +77,7 @@ Developers👍
     <th>{ "id" : 15,  "ingredient" : "당근" }</th>
 </tr>
 <tr>
-    <th>냉장고 재료  추가하기</th>
+    <th>냉장고 재료 추가하기</th>
     <th>POST</th>
     <th>/api/recipe</th>
     <th> { "ingredient" : "당근" </th>
@@ -89,15 +98,15 @@ Developers👍
     <th> "RCP_NM" : "오렌지 당근펀치"  ,
 "ATT_FILE_NO_MK" :   "이미지 URL"  </th>
 </tr>
+
 <tr>
     <th>메뉴 선택 시  레시피 추출</th>
     <th> GET </th>
-    <th>/api/recipe/menu/{query}</th>
+    <th>/api/recipe/menu/{query}</th>  
     <th> - </th>
     <th> "RCP_NM' : '오렌지 당근펀치",
 "ATT_FILE_NO_MK" : "레시피 url"
 "RCP_PARTS_DTLS" : "오렌지 100g(1/2개), 물 50ml(1/4컵)"
-
 "'MANUAL01" : "1. 레시피순서1.",
 "MANUAL01" : "2. 레시피순서2 ",
 "MANUAL01" : "3. 레시피순서3",

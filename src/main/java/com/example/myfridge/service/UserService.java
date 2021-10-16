@@ -61,6 +61,7 @@ public class UserService {
     public User login(String username, String password) {
         System.out.println(username);
         User user = userRepository.findByUsername(username).orElseThrow(() -> new IllegalArgumentException("아이디 찾을 수 없습니다."));
+
          if (!passwordEncoder.matches(password,user.getPassword() ))
         {
              throw new IllegalArgumentException("비밀번호 불일치");
