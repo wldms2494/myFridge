@@ -111,8 +111,8 @@ Developers👍
     <th>GET</th>
     <th>/api/recipe/{ingredient}</th>
     <th> - </th>
-    <th> "RCP_NM" : "오렌지 당근펀치"  ,
-"ATT_FILE_NO_MK" :   "이미지 URL"  </th>
+    <th> ["RCP_NM" : "오렌지 당근펀치"  ,
+"ATT_FILE_NO_MK" :   "이미지 URL" ] </th>
 </tr>
 
 <tr>
@@ -120,12 +120,12 @@ Developers👍
     <th> GET </th>
     <th>/api/recipe/menu/{query}</th>  
     <th> - </th>
-    <th> "RCP_NM' : '오렌지 당근펀치",
+    <th> ["RCP_NM' : '오렌지 당근펀치",
 "ATT_FILE_NO_MK" : "레시피 url"
 "RCP_PARTS_DTLS" : "오렌지 100g(1/2개), 물 50ml(1/4컵)"
 "'MANUAL01" : "1. 레시피순서1.",
 "MANUAL01" : "2. 레시피순서2 ",
-"MANUAL01" : "3. 레시피순서3",
+"MANUAL01" : "3. 레시피순서3" ]
      </th>
 </tr>
 
