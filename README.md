@@ -156,7 +156,7 @@ React : http://localhost:3000
 Springboot : http://localhost:8081    
 
 `http://localhost:3000`에서 `http://localhost:8081`으로 보낸 요청이 CORS정책에 의해 차단되었다는 내용이다.  
-`cross-origin`의 4가지 경우 포트가 다를 경우에 해당 된다.   
+`cross-origin`의 4가지 경우 중 포트가 다를 경우에 해당 된다.   
 두 Origin간에 프로토콜 포트 호스트가 같아야 Same Origin Policy 정책을 만족 시키는데,  
 실제로 Origin이 다른 경우가 허다 하기 때문에, 서버측에서 CORS를 이용하여야 한다   
 
